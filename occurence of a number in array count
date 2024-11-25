@@ -1,0 +1,16 @@
+#include <vector>
+using namespace std;
+
+vector<int> countFrequency(int n, int x, vector<int> &arr) {
+    // Initialize frequency array of size n (index 0 corresponds to number 1, and so on)
+    vector<int> frequency(n, 0);
+
+    // Count frequencies for numbers in the range [1, n]
+    for (int i = 0; i < arr.size(); i++) {
+        if (arr[i] >= 1 && arr[i] <= n) {
+            frequency[arr[i] - 1]++;
+        }
+    }
+
+    return frequency;
+}
