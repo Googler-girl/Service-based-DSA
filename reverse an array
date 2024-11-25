@@ -1,0 +1,13 @@
+class Solution {
+  public:
+void reverseArray(vector<int> &arr) {
+int n = arr.size();
+
+    // Reverse the array using two pointers
+    int left = 0, right = n - 1;
+    while (left < right) {
+        // Swap elements at left and right
+        swap(arr[left], arr[right]);
+        left++;
+        right--;
+    }
