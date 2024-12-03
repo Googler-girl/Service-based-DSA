@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void relativeSort(vector<int>& arr1, vector<int>& arr2)
+{
+    int m = arr1.size(), n = arr2.size();
+    unordered_map<int, int> freq;
+
+    // Count frequency of each element in A1
+    for (int i = 0; i < m; i++) {
+        freq[arr1[i]]++;
+    }
+
+    int index = 0;
+
+    // Place elements of A2 in A1 based on frequency
+    for (int i = 0; i < n; i++) {
+        while (freq[arr2[i]]) {
+            arr1[index++] = arr2[i];
+            freq[arr2[i]]--;
+        }
+        freq.erase(arr2[i]);
+    }
+
+    // Collect remaining elements and sort them
+    vector<int> remaining;
+    for (auto& pair : freq) {
+        while (pair.second--) {
+            remaining.push_back(pair.first);
+        }
+    }
+    sort(remaining.begin(), remaining.end());
+
+    // Append remaining elements to A1
+    for (int i : remaining) {
+        arr1[index++] = i;
+    }
+}
+
+void printArray(vector<int> & arr)
+{
+    for (int i = 0; i < arr.size(); i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+// Driver code
+int main()
+{
+    vector<int> arr1 = { 2, 1, 2, 5, 7, 1, 9, 3, 6, 8, 8 };
+    vector<int> arr2 = { 2, 1, 8, 3 };
+
+    relativeSort(arr1, arr2);
+
+    printArray(arr1);
+
+    return 0;
+}
