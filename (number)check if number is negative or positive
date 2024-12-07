@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+
+void check_num(int n ){
+    if(n > 0)
+    cout<<"positive";
+    else if ( n == 0)
+    cout<<"non negative";
+    
+    else
+    cout<<"negative" ;
+    
+}
+
+
+int main(){
+    int n = -1;
+    check_num(n);
+    return 0;
+}
